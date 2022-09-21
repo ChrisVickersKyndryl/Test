@@ -4,15 +4,15 @@
 
   vars:
     # This could be the service you are checking
-    numbers:
+    windows_service:
     - Stable
     - Not stable
 
   tasks:
-    # This would get the status of the service
+    # This would get the status of the service. It goes the the list windows_service
     - name: Register loop output as a variable
       win_shell: echo "{{ item }}"
-      loop: "{{ numbers }}"
+      loop: "{{ windows_service }}"
       register: echo
  
     # You could loop through the results from above and if it contains the value Stable, do something
