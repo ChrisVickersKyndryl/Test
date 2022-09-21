@@ -7,11 +7,21 @@
     win_shell: sc queryex Winmgmt
     register: my_variable
     
-  - name: Version
+  - name: Hello World!
+    win_shell: vssadmin list writers
+    register: my_variable2
+    
+  - name: My variable
     debug: msg="{{ my_variable.stdout }}"
     
-  - name: Version
+  - name: My variable
     debug: msg="{{ my_variable }}"
+    
+  - name: My variable2
+    debug: msg="{{ my_variable2.stdout }}"
+    
+  - name: My variable2
+    debug: msg="{{ my_variable2 }}"
     
 - name: GetFactsDemo
   hosts: all
