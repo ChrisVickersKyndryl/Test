@@ -16,9 +16,9 @@
   become: false
   tasks:
   - name: Version
-    debug: msg="{{ ansible_distribution }}"
+    debug: msg="{{ my_variable.stdout }}"
   - name: whoami
-    debug: msg="{{ ansible_distribution }}"
+    debug: msg="{{ my_variable.stdout }}"
   
   # how to get the serives 
   #Get-Service 
