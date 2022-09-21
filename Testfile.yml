@@ -1,5 +1,7 @@
 ---
-- name: Hello World!
+- name: Show value of whoami
   hosts: all
-  win_shell: echo "This is my first playbook"
-  
+  tasks:
+    - name: capture output of whoami command
+      command: whoami
+      register: login
