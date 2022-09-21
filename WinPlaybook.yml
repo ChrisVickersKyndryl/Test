@@ -1,8 +1,9 @@
-- name: Show value of whoami
+---
+- name: Text test playbook
   hosts: all
+  vars:
+    text1: This is a single line
   tasks:
-   
-      command: whoami
-      register: login
-      debug: var=login
 
+  - name: Hello World! {{ text1 }}
+    win_shell: echo "Text1"
