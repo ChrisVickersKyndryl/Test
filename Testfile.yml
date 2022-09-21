@@ -1,7 +1,7 @@
 ---
-- name: Hello World!
+-name: Hello World!
   hosts: all
 
- - name: Hello World!
+ -name: Hello World!
     win_shell: echo "This is my first playbook"
   
