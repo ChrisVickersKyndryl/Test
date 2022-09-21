@@ -1,15 +1,13 @@
-- name: Show value of whoami
+---
+- name: Get all windows services
   hosts: all
   gather_facts: true
   
-  
   tasks:
-    - name: capture output of whoami command
-      command: whoami
-      output: " This is my first login"
-      
-      - name: collect facts about system services
+    - name: collect facts about system services
       service_facts:
       register: services_state
-      output: "List of all services"
 
+    - name: Debug
+      debug:
+        var: services_state
