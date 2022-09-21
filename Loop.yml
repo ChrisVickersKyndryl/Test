@@ -17,8 +17,6 @@
  
     # You could loop through the results from above and if it contains the value Stable, do something
     # The list item you are looking at is called "item"
-    - block:
- 
-      - name: Loop through code
-        include_tasks: LoopTask.yml
-        loop: "{{ echo.results }}"
+    - name: Loop through code
+      include_tasks: LoopTask.yml
+      loop: "{{ echo.results }}"
