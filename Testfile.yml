@@ -4,4 +4,4 @@
   tasks:
     - name: capture output of whoami command
       command: whoami
-      register: login
+      output: I have logged in to the system 
