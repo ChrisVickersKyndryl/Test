@@ -1,7 +1,7 @@
----
 - name: Show value of whoami
   hosts: all
   tasks:
     - name: capture output of whoami command
       command: whoami
-      output: I have logged in to the system 
+      register: login
+    - debug: var=login
