@@ -18,3 +18,6 @@
     debug: msg="{{ ansible_distribution }}"
   - name: whoami
     debug: msg="{{ ansible_distribution }}"
+  
+  # how to get the serives 
+  
