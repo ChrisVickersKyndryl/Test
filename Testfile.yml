@@ -15,3 +15,5 @@
   tasks:
   - name: Version
     debug: msg="{{ ansible_distribution }}"
+  - name: whoami
+    debug: msg="{{ ansible_distribution }}"
