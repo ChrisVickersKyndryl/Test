@@ -7,3 +7,11 @@
 
   - name: Hello World! {{ text1 }}
     win_shell: echo "Text1"
+    
+- name: GetFactsDemo
+  hosts: all
+  gather_facts: yes
+  become: false
+  tasks:
+  - name: Version
+    debug: msg="{{ ansible_distribution }}"
