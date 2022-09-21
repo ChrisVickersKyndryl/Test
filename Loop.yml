@@ -15,5 +15,5 @@
       
     - name: Print output
       debug:
-        msg: "Result from command above {{ item }}"
+        msg: "Result from command above: {{ item.stdout }}"
       loop: "{{ echo.results }}"
