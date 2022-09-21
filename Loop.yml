@@ -2,12 +2,15 @@
 - name: Hello World!
   hosts: all
 
+  vars:
+    numbers:
+    - One
+    - Two
+
   tasks:
     - name: Register loop output as a variable
       win_shell: echo "{{ item }}"
-      loop:
-        - "one"
-        - "two"
+      loop: "{{ numbers }}"
       register: echo
       
     - name: Print output
