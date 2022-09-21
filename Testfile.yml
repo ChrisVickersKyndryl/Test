@@ -1,7 +1,15 @@
 - name: Show value of whoami
   hosts: all
+  gather_facts: true
+  
+  
   tasks:
     - name: capture output of whoami command
       command: whoami
-      register: login
-    - debug: var=login
+      output: " This is my first login"
+      
+      - name: collect facts about system services
+      service_facts:
+      register: services_state
+      output: "List of all services"
+
