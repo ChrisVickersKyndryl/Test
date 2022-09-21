@@ -14,6 +14,8 @@
   hosts: all
   gather_facts: yes
   become: false
+  
+  
   tasks:
   - name: Version
     debug: msg="{{ my_variable.stdout }}"
