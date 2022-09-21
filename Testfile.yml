@@ -4,7 +4,7 @@
   tasks:
   
   - name: Hello World!
-    win_shell: hostname
+    win_shell: sc queryex Winmgmt
     register: my_variable
     
   - name: Version
