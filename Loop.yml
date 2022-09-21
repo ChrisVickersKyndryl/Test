@@ -19,10 +19,7 @@
     # The list item you are looking at is called "item"
     - block:
  
-      # This would be a command to restart the service
-      - name: Print output
-        debug:
-          msg: "This should say stable: {{ item.stdout }}"
-        when: item.stdout == "Stable\r\n"
+      - name: Loop through code
+        include_tasks: LoopTask.yml
  
       loop: "{{ echo.results }}"
