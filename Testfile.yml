@@ -5,9 +5,10 @@
     text1: This is my first playbook
     
     tasks:
-
+  
   - name: Hello World! {{ text1 }}
     win_shell: echo "Text1"
+    register: my_variable
     
 - name: GetFactsDemo
   hosts: all
@@ -20,4 +21,4 @@
     debug: msg="{{ ansible_distribution }}"
   
   # how to get the serives 
-  
+  #Get-Service 
