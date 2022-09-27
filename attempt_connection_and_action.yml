@@ -29,8 +29,7 @@
         exec_changed: false
         exec_rc: 105
         exec_message: |
-          - "Failed to connect to the target
-            within {{ target_connection['elapsed'] }} seconds."
+          - "Failed to connect to the target within {{ target_connection['elapsed'] }} seconds."
           - "{{ target_connection['msg'] }}"
   when: target_connection is failed and target_connection['elapsed'] is defined
 
@@ -41,11 +40,16 @@
     # Run shell script to get value
     - name: Run command to check agent up
       shell:
-        cmd: ping -c 10 8.8.8.8
-        # cmd: ./emctl status agent
-        # /opt/oracle/agent/agent_inst/bin
-        chdir: /tmp/
+        cmd: ./emctl status agent
+        chdir: /opt/oracle/agent/agent_inst/bin/
       register: shell_output
+  
+    # Run shell script to get value
+    #- name: Run command to check agent up
+    #  shell:
+    #    cmd: ping -c 10 8.8.8.8
+    #    chdir: /tmp/
+    #  register: shell_output
 
     # If agent heart beat status IS OK. Return code 0 (Remediation with validation closure)
     # Ticket will be closed automatically
