@@ -44,12 +44,15 @@
         chdir: /opt/oracle/agent/agent_inst/bin/
       register: shell_output
   
-    # Run shell script to get value
-    #- name: Run command to check agent up
-    #  shell:
-    #    cmd: ping -c 10 8.8.8.8
-    #    chdir: /tmp/
-    #  register: shell_output
+    # Debug to check that the line contains the value heartbeat status
+    - debug:
+      msg: Contains Hearbeat status
+      when: shell_output.stdout[20] | default('') is search('Heartbeat Status')
+
+    # Debug to check that the line contains the value Ok
+    - debug:
+      msg: Contains Ok status
+      when: shell_output.stdout[20] | default('') is search('Ok')
 
     # If agent heart beat status IS OK. Return code 0 (Remediation with validation closure)
     # Ticket will be closed automatically
