@@ -1,0 +1,15 @@
+---
+- name: Run script playbook
+  hosts: all
+
+  tasks:
+
+    # Run shell script to get value
+    - name: Run command to check agent up
+      shell:
+        cmd: ./ping -c 8.8.8.8
+        chdir: /bin/
+      register: shell_output
+      
+    - debug:
+        msg: "{{ shell_output }}"
