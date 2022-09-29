@@ -6,9 +6,9 @@
 
     # Run shell script to get value
     - name: Run command to check agent up
-      shell:
-        cmd: ping -c 10 8.8.8.8
-        chdir: /bin/
+      shell: /bin/ping -c 10 8.8.8.8
+        #cmd: ping -c 10 8.8.8.8
+        #chdir: /bin/
       register: shell_output
       
     - debug:
