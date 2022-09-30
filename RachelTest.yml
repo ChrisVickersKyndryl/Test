@@ -1,0 +1,16 @@
+---
+- name: Perform HC for NonProd C1 WAS
+  hosts: "{{ wasserver }}"
+  tasks:
+    
+    - block:
+        - name: WAS HC
+          shell: ping -c 1 8.8.8.8
+          register: was_healthcheck   
+
+        - debug:
+            msg: "{{ was_healthcheck }}"
+
+      become: true
+      become_method: sudo
+      become_user: '{{ was_user }}'
