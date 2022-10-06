@@ -6,6 +6,8 @@
     shell: ping -c 60 8.8.8.8
     delegate_to: 127.0.0.1
     run_once: true
+    become: yes
+    become_method: su
     
   - name: Write folder exists
     debug:
