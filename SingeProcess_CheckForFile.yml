@@ -1,1 +1,13 @@
----
+- name: Playbook name
+  hosts: all
+
+  tasks:
+  - name: Check for foldeer
+    stat:
+      path: /Ansible123/
+    register: register_name
+    
+  - name: Write folder exists
+    debug:
+      msg: "The file or directory exists"
+    when: register_name.stat.exists
