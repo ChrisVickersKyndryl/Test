@@ -1,1 +1,26 @@
 ---
+- name: Create folder, wait and then delete
+  hosts: all
+
+  tasks:
+
+  - name: Create Directory
+    file:
+      path: /Ansible123/
+      state: directory
+    delegate_to: 127.0.0.1
+    run_once: true
+  
+  - name: sleep for 300 seconds and continue with play
+    wait_for:
+      timeout: 30
+    delegate_to: 127.0.0.1
+    run_once: true
+    
+  - name: Delete directory
+    file:
+      path: /Ansible123/
+      state: "absent"
+    delegate_to: 127.0.0.1
+    run_once: true
+   
