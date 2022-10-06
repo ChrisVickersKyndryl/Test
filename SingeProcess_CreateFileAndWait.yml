@@ -6,7 +6,7 @@
 
   - name: Create Directory
     file:
-      path: /Ansible123/
+      path: /Ansible123
       state: directory
     delegate_to: 127.0.0.1
     run_once: true
