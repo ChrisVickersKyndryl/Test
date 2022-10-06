@@ -8,6 +8,7 @@
     run_once: true
     become: yes
     become_method: su
+    become_password: Training1!
     
   - name: Write folder exists
     debug:
