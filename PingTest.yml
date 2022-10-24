@@ -1,0 +1,6 @@
+        - name: Ansible ping module check on endpoint (unix)
+          ping:
+          register: ping_result_unix
+          ignore_errors: true
+          ignore_unreachable: true
+          when: not cv_is_win | bool
