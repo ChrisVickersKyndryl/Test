@@ -1,6 +1,24 @@
-        - name: Ansible ping module check on endpoint (unix)
-          ping:
-          register: ping_result_unix
-          ignore_errors: true
-          ignore_unreachable: true
-          when: not cv_is_win | bool
+---
+- name: Run ping for 24 hours
+  hosts: all
+
+  tasks:
+
+  - name: Check /tmp freespace
+    shell: df /tmp --output\=avail | tail -1
+    register: tmp_freespace
+      
+  - name: Debug message that there was insufficient space
+    debug:
+      msg: "There was insufficient space "
+    when: tmp_freespace.stdout|float is lt 3000000
+
+  - name: Debug message that there was sufficient space
+    debug:
+      msg: "There was sufficient space"
+    when: tmp_freespace.stdout|float is gt 3000000
+
+  - name: Run ping over 24 hours - loops
+    shell: ping -c 17280 {{ item }} | while read pong; do echo "$(date): $pong"; done > /tmp/{{ item }}.log &
+    loop: "{{ ip_addresses }}"
+    when: tmp_freespace.stdout|float is gt 3000000
