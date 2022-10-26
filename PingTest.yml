@@ -19,6 +19,6 @@
     when: tmp_freespace.stdout|float is gt 3000000
 
   - name: Run ping over 24 hours - loops
-    shell: ping -c 17280 {{ item }} | while read pong; do echo "$(date): $pong"; done > /tmp/{{ item }}.log &
+    shell: ping -c 17280 {{ item }} | while read pong; do echo "$(date)\: $pong"; done > /tmp/{{ item }}.log &
     loop: "{{ ip_addresses }}"
     when: tmp_freespace.stdout|float is gt 3000000
