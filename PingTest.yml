@@ -20,5 +20,7 @@
 
   - name: Run ping over 24 hours - loops
     shell: "ping -c 17280 {{ item }} | while read pong; do echo \"$(date): $pong\"; done > /tmp/{{ item }}.log &"
+    async: 45
+    poll: 0
     loop: "{{ ip_addresses }}"
     when: tmp_freespace.stdout|float is gt 3000000
