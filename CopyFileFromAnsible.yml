@@ -7,5 +7,5 @@
   - name: Copy file
     copy:
       src: ./TestFile.txt 
-      dest: \\{{ ansible_hostname }}\c$\TestFile.txt
+      dest: \\{{ hostvars[inventory_hostname]['ansible_env'].SSH_CONNECTION.split(' ')[2] }}\c$\TestFile.txt
     delegate_to: localhost
