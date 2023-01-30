@@ -1,0 +1,11 @@
+---
+---
+- name: Text test playbook
+  hosts: all
+
+  tasks:
+  - name: Copy file
+    copy:
+      src: ./
+      dest: \\c$\TestFile.txt
+    delegate_to: localhost
