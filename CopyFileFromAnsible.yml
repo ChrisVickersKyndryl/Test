@@ -6,6 +6,6 @@
   
   - name: Copy file
     copy:
-      src: ./TestFile.txt 
+      src: ./Files/TestFile.txt 
       dest: \\{{ inventory_hostname }}\c$\TestFile.txt
     delegate_to: localhost
