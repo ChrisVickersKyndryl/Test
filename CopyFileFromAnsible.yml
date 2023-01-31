@@ -5,7 +5,7 @@
   tasks:
   
   - name: Copy file
-    copy:
-      src: ./Files/TestFile.txt 
+    win_copy:
+      src: File
       dest: \\{{ inventory_hostname }}\c$\TestFile.txt
-    delegate_to: localhost
+    #delegate_to: localhost
