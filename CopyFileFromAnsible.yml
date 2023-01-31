@@ -6,6 +6,6 @@
   
   - name: Copy file
     win_copy:
-      src: File
-      dest: \\{{ inventory_hostname }}\c$\TestFile.txt
+      src: TestFile.txt
+      dest: c:\temp\TestFile.txt
     #delegate_to: localhost
