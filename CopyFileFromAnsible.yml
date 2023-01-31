@@ -4,6 +4,9 @@
 
   tasks:
   
+  - name: Print working directory
+    win_shell: pwd
+  
   - name: Copy file
     win_copy:
       src: TestFile.txt
