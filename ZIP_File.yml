@@ -1,0 +1,17 @@
+---
+- name: Run command
+  hosts: all
+  gather_facts: yes
+  tasks:
+
+  - name: Unzip document
+    win_shell: |
+      Expand-Archive -Path MyZipFile.zip -DestinationPath "Test"
+      
+  - name: Run file
+    win_shell: ./NameOfFile.cmd
+    
+  - name: Copy result file to somewhere on the network
+    win_copy:
+      src: C:\Temp\foo.txt
+      dest: \\FolderShare\Temp\Result.txt
