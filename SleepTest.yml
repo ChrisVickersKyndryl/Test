@@ -3,6 +3,10 @@
   hosts: all  
   tasks:
 
+
+  - name: Print working directory
+    win_shell: pwd
+
   - name: Pause for 10 minutes to build app cache
     pause:
       minutes: 10
