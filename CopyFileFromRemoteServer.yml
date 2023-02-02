@@ -4,8 +4,8 @@
   tasks:
     - name: Copy file
       win_copy:
-        src: "\\172.16.25.22\C$\qakreport.zip"
-        dest: "C:\temp\qakreport.zip"
+        src: \\172.16.25.22\C$\qakreport.zip
+        dest: C:\temp\qakreport.zip
       vars:
         ansible_user: "{{ username }}"
         ansible_password: "{{ password }}"
