@@ -7,7 +7,7 @@
         src: \\172.16.25.22\C$\qakreport.zip
         dest: C:\temp\qakreport.zip
       vars:
-        ansible_user: "{{ username }}"
-        ansible_password: "{{ password }}"
+        ansible_user: "{{ ansible_username }}"
+        ansible_password: "{{ ansible_password }}"
         ansible_connection: winrm
         ansible_winrm_server_cert_validation: ignore
