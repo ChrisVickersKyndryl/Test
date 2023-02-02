@@ -1,5 +1,5 @@
 - name: Copy file from remote to local Windows server
-  hosts: local_server
+  hosts: all
   gather_facts: no
   tasks:
     - name: Copy file
