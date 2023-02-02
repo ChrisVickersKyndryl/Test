@@ -8,7 +8,7 @@
         remote_src: yes
         dest: C:\temp\qakreport.zip
       vars:
-        ansible_user: Training
+        ansible_user: DESKTOP-5PB12V9\Training
         ansible_password: Training1!
         ansible_connection: winrm
         ansible_winrm_server_cert_validation: ignore
