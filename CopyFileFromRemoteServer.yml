@@ -5,6 +5,7 @@
     - name: Copy file
       win_copy:
         src: \\172.16.25.22\C$\qakreport.zip
+        remote_src: yes
         dest: C:\temp\qakreport.zip
       vars:
         ansible_user: Training
