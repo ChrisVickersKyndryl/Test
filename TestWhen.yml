@@ -4,6 +4,12 @@
 
   tasks:
   
+    # Check if config file exists 
+    - name: Check if file exists
+      stat:
+        path: c:\Windows\System32\Drivers\etc\hosts
+      register: check_file
+  
     # Run the windows command to add to the text file. If the file already exists, no action is taken
     - name: Run the windows command to add the entry to the text file
       win_shell: Write-Host "True"
@@ -13,4 +19,4 @@
     - name: Show debug that the line exists in config file
       debug:
         msg: "Config contains line"
-      when: "'True' in add_line_output.stdout | default('')"
+      when: "'True' in add_line_output.stdout | default('') and check_file.stat.exists"
