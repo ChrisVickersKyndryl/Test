@@ -12,7 +12,7 @@
   
     # Run the windows command to add to the text file. If the file already exists, no action is taken
     - name: Run the windows command to add the entry to the text file
-      win_shell: Write-Host "True"
+      win_shell: Write-Host "False"
       register: add_line_output
 
     # Run the windows command to add to the text file. If the file already exists, no action is taken
