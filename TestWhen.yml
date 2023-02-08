@@ -1,0 +1,17 @@
+    # Check if config file exists 
+    - name: Check if file exists
+      stat:
+        path: C:\IBM\ITM\smitools\config\K06_LogicalDisks.param
+      register: check_file
+    
+    # Run the windows command to add to the text file. If the file already exists, no action is taken
+    - name: Run the windows command to add the entry to the text file
+      win_shell: "{{ shell_command }}"
+      register: add_line_output
+      when: check_file.stat.exists
+
+    # Run the windows command to add to the text file. If the file already exists, no action is taken
+    - name: Show debug that the line exists in config file
+      debug:
+        msg: "Config contains line"
+      when: "'True' in add_line_output.stdout | default('') and check_file.stat.exists"
