@@ -1,0 +1,8 @@
+- name: Copy file from remote host to localhost via jump host
+  hosts: remote_host
+  become: true
+  tasks:
+    - name: Fetch file from remote host
+      fetch:
+        src: /path/to/file/on/remote/host
+        dest: /tmp/
