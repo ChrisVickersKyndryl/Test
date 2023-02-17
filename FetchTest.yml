@@ -2,14 +2,8 @@
 - name: Fetch test
   hosts: all
   gather_facts: yes
-  #become: false
   tasks:
-
-  - name: Copy file from remote host to localhost via jump host
-    hosts: remote_host
-    become: true
-    tasks:
-      - name: Fetch file from remote host
-        fetch:
-          src: c:\Windows\System32\Drivers\etc\hosts
-          dest: /tmp/
+    - name: Fetch file from remote host
+      fetch:
+        src: c:\Windows\System32\Drivers\etc\hosts
+        dest: /tmp/
