@@ -1,0 +1,5 @@
+  - name: Copy file
+    win_copy:
+      src: TestFile.txt
+      dest: c:\temp\TestFile.txt
+    #delegate_to: localhost
