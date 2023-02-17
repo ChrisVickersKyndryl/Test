@@ -6,27 +6,23 @@
   
     - name: Copy file from playbook
       win_copy:
-        src: TestZip.zip
-        dest: c:\temp\TestFile.txt
-      #delegate_to: localhost
+        src: test.zip
+        dest: c:\temp\test.zip
   
-    - name: Unzip a bz2 (BZip) file
+    - name: Unzip file
       win_unzip:
-        src: C:\Users\Phil\Logs.bz2
-        dest: C:\Users\Phil\OldLogs
+        src: c:\temp\test.zip
+        dest: c:\temp\
+  
+    - name: Run extracted powershell file
+      win_shell: c:\temp\test.ps1
   
     - name: Fetch file from remote host
       fetch:
-        src: c:\Windows\System32\Drivers\etc\hosts
+        src: c:\temp\output.txt
         dest: /tmp/
            
     - name: Display file contents
       debug: var=item
       with_file:
-        - "/tmp/172.16.25.23/c:/Windows/System32/Drivers/etc/hosts"  
-  
-    - name: Copy file
-      win_copy:
-        src: TestFile.txt
-        dest: c:\temp\TestFile.txt
-      #delegate_to: localhost
+        - "/tmp/172.16.25.23/c:/temp/output.txt"
