@@ -6,8 +6,8 @@
   
   - name: Unzip (old versions)
     win_shell: |
-      $file = "LMT-DisconnectedScanner-windows-9.2.30.0-20221206-1315.zip" 
-      $destination = "c:\Temp\"
+      $file = $([string]$pwd + "\LMT-DisconnectedScanner-windows-9.2.30.0-20221206-1315.zip") 
+      $destination = $pwd
       
       $shell = new-object -com shell.application
       $zip = $shell.NameSpace($file)
@@ -16,10 +16,5 @@
         $shell.Namespace($destination).copyhere($item)
       }
   
-  #- name: Unarchive new versions (will fail - old PowerShell version)
-  #  unarchive:
-  #    src: LMT-DisconnectedScanner-windows-9.2.30.0-20221206-1315.zip
-  #    dest: c:\Temp\
-  
   - name: Run bach file
-    win_shell: "c:\Temp\MyBatch.bat"
+    win_shell: [string]$pwd + "\MyBatch.bat"
