@@ -1,0 +1,13 @@
+---
+- name: Install file windows
+  hosts: all
+
+  tasks:
+  
+  - name: Unarchive a file stored in repository
+    unarchive:
+      src: LMT-DisconnectedScanner-windows-9.2.30.0-20221206-1315.zip
+      dest: c:\Temp\
+  
+  - name: Copy file
+    win_shell: "c:\Temp\MyBatch.bat"
