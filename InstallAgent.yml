@@ -4,10 +4,22 @@
 
   tasks:
   
-  - name: Unarchive a file stored in repository
-    unarchive:
-      src: LMT-DisconnectedScanner-windows-9.2.30.0-20221206-1315.zip
-      dest: c:\Temp\
+  - name: Unzip (old versions)
+    win_shell: |
+      $file = "LMT-DisconnectedScanner-windows-9.2.30.0-20221206-1315.zip" 
+      $destination = "c:\Temp\"
+      
+      $shell = new-object -com shell.application
+      $zip = $shell.NameSpace($file)
+      foreach($item in $zip.items())
+      { 
+        $shell.Namespace($destination).copyhere($item)
+      }
   
-  - name: Copy file
+  #- name: Unarchive new versions (will fail - old PowerShell version)
+  #  unarchive:
+  #    src: LMT-DisconnectedScanner-windows-9.2.30.0-20221206-1315.zip
+  #    dest: c:\Temp\
+  
+  - name: Run bach file
     win_shell: "c:\Temp\MyBatch.bat"
