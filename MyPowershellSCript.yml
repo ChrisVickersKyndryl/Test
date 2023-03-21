@@ -1,0 +1,39 @@
+---
+- name: Uninstall
+  hosts: all
+  gather_facts: yes
+  tasks:
+  
+  # Remove scheduled tasks
+  - name: Delete tasks
+    win_shell: |
+      # Remove task
+      $tasks = @(
+        "AIC fetch",
+        "AIC scanning",
+        "IBM ILMT hardware capacity scan"
+      )
+      
+      foreach($t in $tasks)
+      {
+          try{
+              Stop-ScheduledTask -TaskName $t
+              Start-Sleep -Seconds 5
+              Unregister-ScheduledTask -TaskName $t -Confirm:$false
+          }
+          catch {
+              Write-Host $("Failed to remove task: " + $t)
+          }
+      }
+    
+  # Delete Folder 1
+  - name: Recursively remove directory
+    file:
+      path: "C:\AIC_standalone"
+      state: absent
+      
+  # Delete Folder 2
+  - name: Recursively remove directory
+    file:
+      path: "C:\Program Files\ansible\GTS"
+      state: absent
