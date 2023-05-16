@@ -1,5 +1,5 @@
 ---
-- name: Run PowerShell Command Every Minute
+- name: Run PowerShell Command Every 5 seconds
   hosts: all
   gather_facts: false
 
