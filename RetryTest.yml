@@ -1,6 +1,6 @@
 ---
 - name: Run PowerShell Command Every Minute
-  hosts: windows_hosts
+  hosts: all
   gather_facts: false
 
   tasks:
