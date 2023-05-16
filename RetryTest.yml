@@ -14,4 +14,5 @@
       register: value_normal
       loop: "{{ range(loopCount.stdout | int) | list }}"
       delay: 5
-      when: value_normal.stdout | default('FALSE') == 'FALSE'
+      #when: value_normal.stdout | default('FALSE') == 'FALSE'
+      when: value_normal.stdout | default('FALSE') is search('FALSE')
