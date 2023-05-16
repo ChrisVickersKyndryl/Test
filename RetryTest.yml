@@ -11,6 +11,6 @@
     - name: Loop with Break
       win_shell: Write-Host "FALSE"
       register: value_normal
-      loop: "{{ range(5) }}"
+      loop: "{{ range(5) | list }}"
       delay: 10
       when: value_normal.stdout == 'FALSE'
