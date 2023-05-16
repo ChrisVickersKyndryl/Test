@@ -13,4 +13,4 @@
       register: value_normal
       loop: "{{ range(5) | list }}"
       delay: 10
-      when: value_normal.stdout == 'FALSE'
+      when: value_normal.stdout | default('FALSE') == 'FALSE'
