@@ -1,0 +1,16 @@
+---
+- name: Run PowerShell Command Every Minute
+  hosts: windows_hosts
+  gather_facts: false
+
+  tasks:
+    - name: Set a Fact
+      set_fact:
+        value_normal: "FALSE"
+      
+    - name: Loop with Break
+      win_shell: Write-Host "FALSE"
+      register: value_normal
+      loop: "{{ range(5) }}"
+      delay: 10
+      when: value_normal.stdout == 'FALSE'
