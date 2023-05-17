@@ -6,7 +6,9 @@
   tasks:
       
     # Default return value is an escalation
-      
+    - name: Return code to escalate alerts
+      debug:
+        msg: "Return code returned to continue escelation"
       
     # Value defined here is used to work out how many/how long to check the value for. Max must always be less than an hour and a half
     - name: Set Default Value
@@ -22,9 +24,13 @@
         if($Processor -lt 85) { Write-Host "CPU Okay" }
       register: value_normal
       loop: "{{ range(loopCount.stdout | int) | list }}"
+      # 
       delay: 5
       # Continue loop until it contains the reponse 'CPU Okay'
       when: value_normal.stdout | default('') is not search('CPU Okay')
       
     # If return value is okay use this return code
-      
+    - name: Return code to close alert
+      debug:
+        msg: "Return code returned to close alert"
+      when: value_normal.stdout | default('') is search('CPU Okay')
