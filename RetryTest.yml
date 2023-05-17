@@ -23,6 +23,7 @@
       register: value_normal
       loop: "{{ range(loopCount.stdout | int) | list }}"
       delay: 5
-      when: value_normal.stdout | default('') is search('Cpu Okay')
+      # Continue loop until it contains the reponse 'CPU Okay'
+      when: value_normal.stdout | default('') is not search('CPU Okay')
       
     # If return value is okay use this return code
