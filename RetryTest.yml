@@ -5,14 +5,24 @@
 
   tasks:
       
+    # Default escelation
+      
+    # Value defined here is used to work out how many/how long to check the value for. Max must always be 
     - name: Set Default Value
       win_shell: Write-Host "5"
       register: loopCount
-      
+     
+    # Value to check multiple times.
     - name: Run command until it returns "FALSE"
-      win_shell: Write-Host "FALSE"
+      win_shell: |
+        $Processor = (Get-WmiObject -ComputerName "localhost" -Class win32_processor -ErrorAction Stop | Measure-Object -Property LoadPercentage -Average | Select-Object Average).Average
+        if($Processor -lt 85)
+        {
+          Write-Host "CPU Okay"
+        }
       register: value_normal
       loop: "{{ range(loopCount.stdout | int) | list }}"
       delay: 5
-      #when: value_normal.stdout | default('FALSE') == 'FALSE'
-      when: value_normal.stdout | default('FALSE') is search('FALSE')
+      when: value_normal.stdout | default('') is search('Cpu Okay')
+      
+    # If return value is okay use this return code
