@@ -12,7 +12,7 @@
       
     # Value defined here is used to work out how many/how long to check the value for. Max must always be less than an hour and a half
     - name: Set Default Value
-      win_shell: Write-Host "30"
+      win_shell: Write-Host "30" # Number of times to check
       register: loopCount
      
     # Value to check multiple times.
@@ -25,7 +25,7 @@
       register: value_normal
       loop: "{{ range(loopCount.stdout | int) | list }}"
       # 
-      delay: 180
+      delay: 180 # Seconds
       # Continue loop until it contains the reponse 'CPU Okay'
       when: value_normal.stdout | default('') is not search('CPU Okay')
       
